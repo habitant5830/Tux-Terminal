@@ -5,7 +5,7 @@
 }
 
 :root {
-  font-family: sans-serif;
+  font-family: serif;
   font-size: 1rem;
   line-height: 1rem;
   text-align: left;
@@ -55,7 +55,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: serif;
+  font-family: sans-serif;
 }
 
 /* id selector */
@@ -64,7 +64,6 @@ h6 {
   display: flex;
   justify-content: center;
   background-color: lightcyan;
-  box-shadow: 3px 3px 5px;
   border-radius: var(--border-radius);
   margin: 1rem 5rem 0;
 }
@@ -80,23 +79,10 @@ h6 {
 }
 
 h1 {
-  text-shadow:
-    3px 3px 5px lightgoldenrodyellow,
-    -3px -3px 5px lightgreen;
   text-align: center;
   padding: 1rem;
   margin: 0;
   color: darkblue;
-}
-
-h2 {
-  text-shadow:
-    3px 3px 5px #fffad3,
-    -3px -3px 5px #fffad3;
-  text-align: center;
-  padding: 1rem;
-  margin: 0;
-  color: #468432;
 }
 
 /* code block */
@@ -121,25 +107,44 @@ blockquote {
 }
 
 header {
+  display: flex;
   border-radius: var(--border-radius);
   background-color: var(--primary-color);
   margin: 0.5rem 1rem;
 }
 
+.header-logo {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+.header-title {
+  font-size: x-large;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
 nav {
   display: flex;
-  gap: 3rem;
-  justify-content: center;
+  align-items: center;
+  justify-content: end;
+  margin-right: 2rem;
+  gap: 6rem;
+  flex: 1;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
   color: #ffffff;
-}
-
-nav h4:hover {
-  transition: transform 0.3s ease;
-  transform: translateY(-3px) scale(1.55);
-  padding: 0 1rem;
 }
 
 /* footer section */
@@ -199,33 +204,8 @@ a:active {
 }
 
 .home-picture {
-  width: 200px;
+  width: 40px;
   height: auto;
-  margin: 2rem auto;
-  animation-name: updown;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
-
-.home-picture:hover {
-  animation-play-state: paused;
-}
-
-/*.welcome-text {
-  animation-name: flip;
-  animation-duration: 8s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-play-state: running;
-}*/
-
-.welcome-text:hover {
-  animation-play-state: paused;
 }
 
 /* profile */
@@ -322,9 +302,6 @@ td {
 .status-text {
   color: green;
   font-weight: bold;
-  text-shadow:
-    3px 3px 5px lightgreen,
-    -3px -3px 5px lightseagreen;
 }
 
 th {
@@ -360,48 +337,58 @@ tr:nth-child(even) {
 .grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .grid-column {
   border: var(--border);
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: var(--border-radius);
 }
 
 .grid-column:hover {
   transition: transform 0.3s ease;
   transform: translateY(-3px) scale(1.05);
-  box-shadow:
-    5px 5px 6px lightgoldenrodyellow,
+  box-shadow: 5px 5px 6px lightgoldenrodyellow,
     -5px -5px 6px lightgoldenrodyellow;
 }
 
-/* animations */
+/* index page grid */
 
-@keyframes updown {
-  0% {
-    transform: translateY(10px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(10px);
-  }
+.index-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem 4rem;
 }
 
-/*@keyframes flip {
-  0% {
-  }
-  50% {
-    transform: scaleX(-1);
-    color: darkred;
-  }
-  100% {
-    color: darkgreen;
-  }
-}*/
+.index-grid-items {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+}
+
+.index-grid-item-title {
+  font-size: larger;
+}
+
+.index-grid-button {
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.pill-tags {
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  background-color: #ace1af;
+  padding: 0.25rem;
+}
 
 /*Responsive Designing*/
 
