@@ -9,23 +9,23 @@
           Linux, and whatever else I’m into."
     />
     <meta name="author" content="NullPointer8118" />
-    <link rel="stylesheet" href="../../../styles/style.css" />
-    <link rel="icon" type="image/png" href="../../../images/favicon.png" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="icon" type="image/png" href="../images/favicon.png" />
   </head>
   <body>
     <header>
-      <a href="/index.html"
+      <a href="../index.html"
         ><img
           class="header-logo"
-          src="../../../images/profile/home.png"
+          src="../images/profile/home.png"
           alt="home-picture"
       /></a>
-      <div class="header-title">Tux & Terminal</div>
+      <div class="header-title"><a href="../index.html">Tux & Terminal</a></div>
 
       <nav>
-        <h4><a href="../../../index.html">Home</a></h4>
-        <h4><a href="../../../linux-guides/linux_manual.html">Guides</a></h4>
-        <h4><a href="../../../profile.html">Profile</a></h4>
+        <h4><a href="../index.html">Home</a></h4>
+        <h4><a href="../guides.html">Guides</a></h4>
+        <h4><a href="../profile.html">Profile</a></h4>
       </nav>
     </header>
 
@@ -63,15 +63,11 @@
 
         <p>Open the terminal and log in as root:</p>
 
-        <div class="code">
-          <code>> su -</code>
-        </div>
+        <pre><code>su -</code></pre>
 
         <p>Add the username to the sudo group:</p>
 
-        <div class="code">
-          <code>> usermod -aG sudo <-username-></code>
-        </div>
+        <pre><code>usermod -aG sudo <-username-></code></pre>
 
         <p>Log out, then log back in or just perform a reboot.</p>
 
@@ -79,41 +75,22 @@
 
         <p>Access the Debian official repositories file.</p>
 
-        <div class="code">
-          <code>> sudo nano /etc/apt/sources.list</code>
-        </div>
+        <pre><code>sudo nano /etc/apt/sources.list</code></pre>
 
         <p>
           Add the contrib, non-free, and non-free-firmware keywords exactly as
           given below:
         </p>
 
-        <div class="code">
-          <code>
-            > deb https://deb.debian.org/debian trixie main contrib non-free
-            non-free-firmware
-          </code>
+        <pre><code>deb https://deb.debian.org/debian trixie main contrib non-free non-free-firmware</code></pre>
 
-          <br />
+        <pre><code>deb https://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware</code></pre>
 
-          <code>
-            > deb https://deb.debian.org/debian trixie-updates main contrib
-            non-free non-free-firmware
-          </code>
-
-          <br />
-
-          <code>
-            > deb https://security.debian.org/debian-security trixie-security
-            main contrib non-free non-free-firmware
-          </code>
-        </div>
+        <pre><code>deb https://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware</code></pre>
 
         <p>Update repositories:</p>
 
-        <div class="code">
-          <code>> sudo apt update && sudo apt upgrade</code>
-        </div>
+        <pre><code>sudo apt update && sudo apt upgrade</code></pre>
 
         <h2>Install Essential Packages</h2>
 
@@ -130,19 +107,11 @@
 
         <h3>Install microcode and drivers</h3>
 
-        <div class="code">
-          <code
-            >> sudo apt install intel-microcode firmware-misc-nonfree
-            intel-media-va-driver-non-free mesa-va-drivers firmware-linux
-            firmware-linux-nonfree</code
-          >
-        </div>
+        <pre><code>sudo apt install intel-microcode firmware-misc-nonfree intel-media-va-driver-non-free mesa-va-drivers firmware-linux firmware-linux-nonfree</code></pre>
 
         <h3>Install hardware monitoring tools</h3>
 
-        <div class="code">
-          <code>> sudo apt install lm-sensors intel-gpu-tools</code>
-        </div>
+        <pre><code>sudo apt install lm-sensors intel-gpu-tools</code></pre>
 
         <h3>Power management tools</h3>
 
@@ -155,9 +124,7 @@
           step.
         </p>
 
-        <div class="code">
-          <code>> sudo apt install tlp tlp-rdw thermald</code>
-        </div>
+        <pre><code>sudo apt install tlp tlp-rdw thermald</code></pre>
 
         <blockquote>
           Caution: Installing <strong>tlp</strong> alongside
@@ -165,42 +132,27 @@
           cannot use both at the same time.
         </blockquote>
 
-        <p class="">Enable TLP services and thermald:</p>
+        <p>Enable TLP services and thermald:</p>
 
-        <div class="code">
-          <code>> sudo systemctl enable --now tlp.service</code>
+        <pre><code>sudo systemctl enable --now tlp.service</code></pre>
 
-          <br />
-
-          <code>> sudo systemctl enable --now thermald</code>
-        </div>
+        <pre><code>sudo systemctl enable --now thermald</code></pre>
 
         <p>Check the current status by using the following:</p>
 
-        <div class="code">
-          <code>> tlp-stat -s</code>
-        </div>
+        <pre><code>tlp-stat -s</code></pre>
 
         <h2>Configure touchpad and gestures (Wayland).</h2>
 
-        <div class="code">
-          <code>> sudo apt install libinput-tools</code>
-        </div>
+        <pre><code>sudo apt install libinput-tools</code></pre>
 
         <h2>Multimedia codecs and hardware acceleration</h2>
 
-        <div class="code">
-          <code
-            >> sudo apt install ffmpeg gstreamer1.0-plugins-ugly
-            gstreamer1.0-plugins-bad gstreamer1.0-libav vainfo</code
-          >
-        </div>
+        <pre><code>sudo apt install ffmpeg gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad gstreamer1.0-libav vainfo</code></pre>
 
         <p>Verify hardware acceleration using:</p>
 
-        <div class="code">
-          <code>> vainfo</code>
-        </div>
+        <pre><code>vainfo</code></pre>
 
         <h2>Firmware updates using the fwupd package</h2>
 
@@ -212,56 +164,37 @@
 
         <p>Download the fwupd package:</p>
 
-        <div class="code">
-          <code>> sudo apt install fwupd</code>
-        </div>
+        <pre><code>sudo apt install fwupd</code></pre>
 
         <p>Check for updates:</p>
 
-        <div class="code">
-          <code>> fwupdmgr refresh</code>
-        </div>
+        <pre><code>fwupdmgr refresh</code></pre>
 
         <p>Get available updates:</p>
 
-        <div class="code">
-          <code>> fwupdmgr get-updates</code>
-        </div>
+        <pre><code>fwupdmgr get-updates</code></pre>
 
         <p>Apply updates:</p>
 
-        <div class="code">
-          <code>> fwupdmgr update</code>
-        </div>
+        <pre><code>fwupdmgr update</code></pre>
 
         <h2>Install and set up Flatpak.</h2>
 
         <p>Install flatpak:</p>
 
-        <div class="code">
-          <code>> sudo apt install flatpak</code>
-        </div>
+        <pre><code>sudo apt install flatpak</code></pre>
 
         <p>Add the Flathub integration plugin for gnome-software in gnome:</p>
 
-        <div class="code">
-          <code>> sudo apt install gnome-software-plugin-flatpak</code>
-        </div>
+        <pre><code>sudo apt install gnome-software-plugin-flatpak</code></pre>
 
         <p>Add the Flathub integration plugin for Plasma Discover in KDE:</p>
 
-        <div class="code">
-          <code>> sudo apt install plasma-discover-backend-flatpak</code>
-        </div>
+        <pre><code>sudo apt install plasma-discover-backend-flatpak</code></pre>
 
         <p>Add the Flathub repository:</p>
 
-        <div class="code">
-          <code
-            >> sudo flatpak remote-add --if-not-exists flathub
-            https://dl.flathub.org/repo/flathub.flatpakrepo</code
-          >
-        </div>
+        <pre><code>sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code></pre>
 
         <p>Now reboot the system. That's it; everything works perfectly.</p>
       </div>
@@ -269,8 +202,11 @@
 
     <footer>
       <div>
-        <p>©️ 2026 | Tux&Terminal</p>
-        <a href="../../../privacy.html">Privacy Policy</a>
+        <div class="copyright-section">
+          <img class="copyright-logo" src="../images/copyright.png" alt="" />
+          <p>2026 | Tux&Terminal</p>
+        </div>
+        <a href="../privacy.html">Privacy Policy</a>
       </div>
     </footer>
   </body>
