@@ -107,12 +107,14 @@ h1 {
 
 /* code block */
 
-code {
+pre {
   background-color: var(--code-bg);
   color: var(--code-text);
   padding: 0.5rem;
   border-radius: var(--border-radius);
-  font-size: large;
+  max-width: 100%; /* Restricts the code box to the main container width */
+  overflow-x: auto; /* Adds a horizontal scrollbar ONLY inside the code box */
+  white-space: pre; /* Keeps the original line breaks */
 }
 
 header {
