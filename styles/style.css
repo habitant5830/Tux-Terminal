@@ -1,54 +1,53 @@
 :root {
   /* Text & Base Layout Colors */
-  --color: #1a202c; /* Dark slate for readable text */
-  --bg-color: #f8fafc; /* Soft light grey (easy on the eyes) */
-  --card-bg: #ffffff; /* Pure white card backgrounds */
-  --border-color: #cbd5e1; /* Subtle grey border */
+  --color: #1a202c;
+  --bg-color: #f8fafc;
+  --card-bg: #d1fae5;
+  --border-color: #cbd5e1;
 
   /* Main Accent & Link Colors */
-  --primary-color: #0f766e; /* Deep teal/emerald for header/buttons */
-  --link: #0d9488; /* Clean teal links */
-  --link-hover: #115e59; /* Darker teal on hover */
+  --primary-color: #0f766e;
+  --link: #0d9488;
+  --link-hover: #115e59;
 
   /* Header, Footer & Navigation Specific Variables */
-  --header-bg: #0f766e; /* Matches primary teal for a solid header */
-  --header-text: #ffffff; /* Crisp white text/links inside the header */
-  --link-active: #5eead4; /* Vibrant mint teal so active links stand out clearly */
-  --nav-link: #ffffff; /* Crisp pure white for default nav text */
-  --nav-link-hover: #99f6e4; /* Soft pastel mint on hover */
-  --nav-link-active: #5eead4; /* Bright mint teal for active page state */
+  --header-bg: #0f766e;
+  --header-text: #ffffff;
+  --link-active: #5eead4;
+  --nav-link: #ffffff;
+  --nav-link-hover: #99f6e4;
+  --nav-link-active: #5eead4;
 
   /* Code Block Variables */
-  --code-bg: #0f172a; /* Deep dark navy/charcoal for terminal feel */
+  --code-bg: #0f172a;
   --code-text: #5eead4;
 
   /* other variables */
   --border-radius: 12px;
   --border: 3px solid var(--border-color);
-  --grid-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
 
   /* Category Pill Badges (REVIEW, PRIVACY, etc.) */
-  --pill-bg: #ccfbf1; /* Soft, light mint tint */
-  --pill-text: #0f766e; /* Deep teal text inside pills */
-  --pill-border: #99f6e4; /* Subtle mint border */
+  --pill-bg: #ccfbf1;
+  --pill-text: #0f766e;
+  --pill-border: #99f6e4;
 
   /* Action Buttons (Explore More...) */
-  --btn-bg: #0f766e; /* Solid deep teal */
-  --btn-text: #ffffff; /* Crisp white button text */
-  --btn-hover: #5eead4; /* Bright mint text on hover */
-  --btn-active: #a7f3d0; /* Soft light mint text on active click */
+  --btn-bg: #0f766e;
+  --btn-text: #ffffff;
+  --btn-hover: #5eead4;
+  --btn-active: #a7f3d0;
   --btn-border: #0f766e;
 
   /* Table Specific Variables */
-  --table-header-bg: var(--primary-color); /* Deep teal header background */
-  --table-header-text: #ffffff; /* Crisp white text for table header */
-  --table-row-bg: var(--card-bg); /* Pure white for primary rows */
-  --table-row-alt-bg: #f1f5f9; /* Soft slate tint for alternating rows */
-  --table-border: var(--border-color); /* Subtle grey border */
+  --table-header-bg: var(--primary-color);
+  --table-header-text: #ffffff;
+  --table-row-bg: var(--card-bg);
+  --table-row-alt-bg: #f1f5f9;
+  --table-border: var(--border-color);
 
   /* Status Text Colors ("Passed") */
-  --status-passed-bg: #dcfce7; /* Soft green badge background */
-  --status-passed-text: #15803d; /* Dark green text */
+  --status-passed-bg: #dcfce7;
+  --status-passed-text: #15803d;
 
   /* grid */
   --grid-hover-bg: rgba(15, 118, 110, 0.25);
@@ -81,24 +80,18 @@ body {
 }
 
 main {
-  flex: 1;
-  width: 100%;
-  max-width: 60rem;
+  display: block;
+  width: 90%;
+  max-width: 750px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* id selector */
 
 #box1 {
-  display: flex;
-  justify-content: center;
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  margin: 1rem 5rem 0;
-}
-
-#box2 {
   display: flex;
   justify-content: center;
   background-color: var(--card-bg);
@@ -119,6 +112,7 @@ code {
   color: var(--code-text);
   padding: 0.5rem;
   border-radius: var(--border-radius);
+  font-size: large;
 }
 
 header {
@@ -227,12 +221,6 @@ a:active {
   color: var(--link-active);
 }
 
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* home greetings section */
 
 .home-greeting {
@@ -247,12 +235,6 @@ a:active {
 }
 
 /* profile */
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .profile-picture {
   width: 100px;
@@ -347,52 +329,33 @@ tr:nth-child(even) {
   text-align: center;
 }
 
-/* grid display */
-
-.grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-column {
-  border: 1px solid var(--border-color);
-  padding: 1.5rem;
-  border-radius: var(--border-radius);
-}
-
-.grid-column:hover {
-  transition: transform 0.3s ease;
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 5px 5px 6px --grid-hover-bg, -5px -5px 6px var(--grid-hover-bg);
-}
-
 /* index page grid */
 
-.index-grid {
+.grid {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
   margin: 2rem 4rem;
 }
 
-.index-grid-items {
+.grid-items {
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: 2rem;
 }
 
-.index-grid-items:hover {
+.grid-items:hover {
   transition: transform 0.3s ease;
   transform: translateY(-3px) scale(1.05);
   box-shadow: 5px 5px 6px --grid-hover-bg, -5px -5px 6px var(--grid-hover-bg);
 }
 
-.index-grid-item-title {
+.grid-item-title {
   font-size: larger;
+  font-weight: bold;
 }
 
-.index-grid-button {
+.grid-button {
   border: 2px solid var(--btn-border);
   background-color: var(--btn-bg);
   border-radius: var(--border-radius);
@@ -402,15 +365,15 @@ tr:nth-child(even) {
   padding: 1rem;
 }
 
-.index-grid-button a {
+.grid-button a {
   color: var(--btn-text);
 }
 
-.index-grid-button a:hover {
+.grid-button a:hover {
   color: var(--btn-hover);
 }
 
-.index-grid-button a:active {
+.grid-button a:active {
   color: var(--btn-active);
 }
 
@@ -427,33 +390,22 @@ tr:nth-child(even) {
 /*Responsive Designing*/
 
 @media (max-width: 600px) {
-  main {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 1rem;
+  .header-title {
+    display: none;
   }
 
-  .nav-links {
-    gap: 1rem;
-  }
-
-  .home-picture {
-    max-width: 40%;
-    height: auto;
-    margin: 1.5rem;
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 0;
   }
 
   table {
     width: 100%;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  #box1,
-  #box2 {
-    margin: 1rem 0 0;
+  #box1 {
+    margin: 1rem 1rem 0;
   }
 
   nav {
