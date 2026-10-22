@@ -82,7 +82,8 @@ body {
 main {
   display: block;
   width: 90%;
-  max-width: 750px;
+  flex: 1;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 1rem 0;
   word-wrap: break-word;
