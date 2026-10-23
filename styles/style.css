@@ -105,9 +105,9 @@
 
 #themeSwitchButton {
   position: fixed;
-  width: 50px;
+  width: 40px;
   height: auto;
-  margin: 2rem 2rem 0 0;
+  margin: 1.5rem 1.5rem 0 0;
 }
 
 .dark-mode #themeSwitchButton {
@@ -490,5 +490,12 @@ tr:nth-child(even) {
 
   nav {
     gap: 2rem;
+  }
+
+  #themeSwitchButton {
+    position: fixed;
+    width: 35px;
+    height: auto;
+    margin: 1rem 1rem 0 0;
   }
 }
