@@ -107,7 +107,7 @@
   position: fixed;
   width: 40px;
   height: auto;
-  margin: 1.5rem 1.5rem 0 0;
+  margin: 0 1.5rem 0 0;
 }
 
 .dark-mode #themeSwitchButton {
@@ -496,7 +496,7 @@ tr:nth-child(even) {
     position: fixed;
     width: 35px;
     height: auto;
-    margin: 1rem 1rem 0 0;
+    margin: 0 1rem 0 0;
   }
 
   .social-links {
