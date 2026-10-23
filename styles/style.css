@@ -498,4 +498,12 @@ tr:nth-child(even) {
     height: auto;
     margin: 1rem 1rem 0 0;
   }
+
+  .social-links {
+    gap: 1rem;
+  }
+
+  figure blockquote {
+    padding-left: 1rem;
+  }
 }
