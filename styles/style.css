@@ -409,7 +409,14 @@ tr:nth-child(even) {
 
 /* index page grid */
 
-.grid {
+#postsGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem 4rem;
+}
+
+#indexPostsGrid {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
