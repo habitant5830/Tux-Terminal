@@ -24,7 +24,7 @@ const header = `
         <a href="/profile.html">Profile</a>
       </h4>
     </nav>
-  </header>,
+  </header>
 `;
 
 const headerPlace = document.getElementById("headerPlace");
