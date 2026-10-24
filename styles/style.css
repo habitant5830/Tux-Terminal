@@ -487,6 +487,12 @@ tr:nth-child(even) {
     margin: 0;
   }
 
+  #indexPostsGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 0;
+  }
+
   table {
     width: 100%;
   }
