@@ -18,7 +18,7 @@ const header = `
         </a>
       </h4>
       <h4>
-        <a href="/guides.html">Guides</a>
+        <a href="/notebook.html">Notebook</a>
       </h4>
       <h4>
         <a href="/profile.html">Profile</a>

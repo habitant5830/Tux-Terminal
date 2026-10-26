@@ -397,7 +397,7 @@ a:active {
 
 /* quotes section */
 
-figure blockquote {
+blockquote {
   border-left: 4px solid var(--primary-color);
   padding-left: 1rem;
 }
@@ -571,7 +571,7 @@ tr:nth-child(even) {
     gap: 1rem;
   }
 
-  figure blockquote {
+  blockquote {
     padding-left: 1rem;
   }
 }
