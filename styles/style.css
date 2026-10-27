@@ -299,7 +299,7 @@ a:active {
   font-size: larger;
   font-style: italic;
   font-weight: bold;
-  animation-duration: 12s;
+  animation-duration: 8s;
   animation-name: fade;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -309,18 +309,14 @@ a:active {
   0% {
     transform: translateX(0);
   }
-  30% {
-    transform: translateX(150px);
-    opacity: 0;
-
-    filter: brightness(20);
+  40% {
+    transform: translateX(25px);
   }
-  31% {
-    transform: translateX(-150px);
-
-    filter: brightness(100%);
+  41% {
+    transform: translateX(-25px);
+    opacity: -1;
   }
-  50% {
+  61% {
     opacity: 1;
   }
   71% {

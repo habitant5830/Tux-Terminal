@@ -8,8 +8,8 @@ function switchGreeting() {
 
 let homeGreeting = document.getElementById("homeGreeting");
 homeGreeting.textContent = "Welcome to Tux & Terminal";
-setTimeout(switchGreeting, 3600);
+setTimeout(switchGreeting, 3200);
 
 homeGreeting.addEventListener("animationiteration", function () {
-  setTimeout(switchGreeting, 3600);
+  setTimeout(switchGreeting, 3200);
 });
