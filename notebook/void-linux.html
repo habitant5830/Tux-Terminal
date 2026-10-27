@@ -106,7 +106,8 @@ ping -c 4 example.com</code></pre>
       <pre><code>sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/sddm /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/</code></pre>
-
+      <h2>Minimal Installation</h2>
+      <pre><code>sudo xbps-install xorg sddm kwin plasma-workspace plasma-desktop plasma-workspace-wallpapers plasma-nm NetworkManager dolphin konsole xdg-utils</code></pre>
       <p>
         Reboot to start Plasma. If you used <code>dhcpcd</code> as a separate
         service and are switching to NetworkManager, check its status first:
