@@ -9,80 +9,88 @@
           Linux, and whatever else I’m into."
   />
   <meta name="author" content="NullPointer8118" />
-  <link rel="stylesheet" href="../styles/style.css" />
-  <link rel="icon" type="image/png" href="../images/favicon.png" />
+  <link rel="stylesheet" href="/styles/style.css" />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+    integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-  <div id="headerPlace"></div>
+  <div id="sidebar"></div>
+  <div class="main-container">
+    <div class="theme-toggle">
+      <img id="themeSwitchButton" src="/images/theme-toggle.png" alt="" />
+    </div>
+    <div id="box1">
+      <h1>Void Linux Setup Guide</h1>
+    </div>
 
-  <div class="theme-toggle">
-    <img id="themeSwitchButton" src="../images/theme-toggle.png" alt="" />
-  </div>
+    <main>
+      <h1>Void Linux Installation and Setup Guide</h1>
 
-  <div id="box1">
-    <h1>Void Linux Setup Guide</h1>
-  </div>
+      <p>
+        This guide assumes the <strong>glibc</strong> ISO and a USB drive of at
+        least 4 GB. Back up important data before changing partitions or
+        installing an operating system. Package availability can vary; check
+        XBPS if a package cannot be found.
+      </p>
 
-  <main>
-    <h1>Void Linux Installation and Setup Guide</h1>
+      <h2>Install Void Linux</h2>
 
-    <p>
-      This guide assumes the <strong>glibc</strong> ISO and a USB drive of at
-      least 4 GB. Back up important data before changing partitions or
-      installing an operating system. Package availability can vary; check XBPS
-      if a package cannot be found.
-    </p>
+      <ol>
+        <li>
+          Boot from the installation USB and log in to the live environment.
+        </li>
+        <li>
+          Start the installer:
+          <pre><code>void-installer</code></pre>
+        </li>
+        <li>
+          Set the keyboard layout, network, mirror, hostname, locale, timezone,
+          root password, and user account in the installer.
+        </li>
+        <li>
+          For a UEFI installation, create or select an EFI System Partition and
+          a Linux root partition. Format the EFI partition as FAT32 and mount it
+          at
+          <code>/boot/efi</code>. Format the root partition as ext4 and mount it
+          at <code>/</code>. Select the correct disk for the bootloader.
+        </li>
+        <li>
+          Review the partition choices carefully, then run the installation.
+        </li>
+        <li>
+          Leave the required default services enabled, reboot, and remove the
+          USB drive.
+        </li>
+      </ol>
 
-    <h2>Install Void Linux</h2>
+      <h2>First login and system update</h2>
 
-    <ol>
-      <li>
-        Boot from the installation USB and log in to the live environment.
-      </li>
-      <li>
-        Start the installer:
-        <pre><code>void-installer</code></pre>
-      </li>
-      <li>
-        Set the keyboard layout, network, mirror, hostname, locale, timezone,
-        root password, and user account in the installer.
-      </li>
-      <li>
-        For a UEFI installation, create or select an EFI System Partition and a
-        Linux root partition. Format the EFI partition as FAT32 and mount it at
-        <code>/boot/efi</code>. Format the root partition as ext4 and mount it
-        at <code>/</code>. Select the correct disk for the bootloader.
-      </li>
-      <li>
-        Review the partition choices carefully, then run the installation.
-      </li>
-      <li>
-        Leave the required default services enabled, reboot, and remove the USB
-        drive.
-      </li>
-    </ol>
+      <p>Log in with the user account you created. Update the system:</p>
+      <pre><code>sudo xbps-install -Syu</code></pre>
 
-    <h2>First login and system update</h2>
+      <h2>Network connection</h2>
 
-    <p>Log in with the user account you created. Update the system:</p>
-    <pre><code>sudo xbps-install -Syu</code></pre>
+      <p>
+        If the installer did not configure networking, use the method
+        appropriate for your setup. For a Wi-Fi connection, NetworkManager is
+        installed below; connect through Plasma’s network settings or use
+        <code>nmtui</code>.
+      </p>
 
-    <h2>Network connection</h2>
+      <p>
+        Alternatively, for a temporary connection with
+        <code>wpa_supplicant</code>, replace the interface name and network
+        details with your own. Avoid putting a real Wi-Fi passphrase in shell
+        history.
+      </p>
 
-    <p>
-      If the installer did not configure networking, use the method appropriate
-      for your setup. For a Wi-Fi connection, NetworkManager is installed below;
-      connect through Plasma’s network settings or use <code>nmtui</code>.
-    </p>
-
-    <p>
-      Alternatively, for a temporary connection with
-      <code>wpa_supplicant</code>, replace the interface name and network
-      details with your own. Avoid putting a real Wi-Fi passphrase in shell
-      history.
-    </p>
-
-    <pre><code>ip link
+      <pre><code>ip link
 sudo wpa_passphrase "YOUR_HOTSPOT_SSID" "YOUR_WIFI_PASSPHRASE" \
   | sudo tee /etc/wpa_supplicant/wpa_supplicant-INTERFACE.conf
 sudo wpa_supplicant -B -i INTERFACE \
@@ -90,163 +98,164 @@ sudo wpa_supplicant -B -i INTERFACE \
 sudo dhcpcd INTERFACE
 ping -c 4 example.com</code></pre>
 
-    <h2>Install KDE Plasma and enable services</h2>
+      <h2>Install KDE Plasma and enable services</h2>
 
-    <pre><code>sudo xbps-install -S kde-plasma kde-baseapps sddm xorg dbus NetworkManager</code></pre>
+      <pre><code>sudo xbps-install -S kde-plasma kde-baseapps sddm xorg dbus NetworkManager</code></pre>
 
-    <p>Enable D-Bus, SDDM, and NetworkManager with runit:</p>
-    <pre><code>sudo ln -s /etc/sv/dbus /var/service/
+      <p>Enable D-Bus, SDDM, and NetworkManager with runit:</p>
+      <pre><code>sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/sddm /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/</code></pre>
 
-    <p>
-      Reboot to start Plasma. If you used <code>dhcpcd</code> as a separate
-      service and are switching to NetworkManager, check its status first:
-    </p>
-    <pre><code>sudo sv status dhcpcd</code></pre>
+      <p>
+        Reboot to start Plasma. If you used <code>dhcpcd</code> as a separate
+        service and are switching to NetworkManager, check its status first:
+      </p>
+      <pre><code>sudo sv status dhcpcd</code></pre>
 
-    <p>
-      If the <code>dhcpcd</code> service is enabled and conflicts with your
-      NetworkManager setup, disable it by removing its service link:
-    </p>
-    <pre><code>sudo rm /var/service/dhcpcd</code></pre>
+      <p>
+        If the <code>dhcpcd</code> service is enabled and conflicts with your
+        NetworkManager setup, disable it by removing its service link:
+      </p>
+      <pre><code>sudo rm /var/service/dhcpcd</code></pre>
 
-    <h2>Applications</h2>
+      <h2>Applications</h2>
 
-    <p>
-      Install applications individually or in smaller groups. If XBPS reports
-      that a package is unavailable, check its exact package name and whether it
-      is available for your repository and architecture.
-    </p>
+      <p>
+        Install applications individually or in smaller groups. If XBPS reports
+        that a package is unavailable, check its exact package name and whether
+        it is available for your repository and architecture.
+      </p>
 
-    <pre><code>sudo xbps-install -S nano ark spectacle okular gwenview gimp firefox chromium \
+      <pre><code>sudo xbps-install -S nano ark spectacle okular gwenview gimp firefox chromium \
   libreoffice vscode haruna android-tools baobab stellarium gcompris-qt \
   octoxbps tuxpaint hugo nodejs ghostwriter hunspell telegram-desktop \
   element-desktop git</code></pre>
 
-    <p>
-      Some listed applications may require a separate download or may not be
-      available under that exact package name. Examples to check separately
-      include FreeTube, Android Studio, Tor Browser, and Vivaldi.
-    </p>
+      <p>
+        Some listed applications may require a separate download or may not be
+        available under that exact package name. Examples to check separately
+        include FreeTube, Android Studio, Tor Browser, and Vivaldi.
+      </p>
 
-    <h2>Drivers and multimedia</h2>
+      <h2>Drivers and multimedia</h2>
 
-    <p>
-      These packages are intended for Intel graphics and firmware. Confirm that
-      they suit your hardware before installing.
-    </p>
-    <pre><code>sudo xbps-install -S intel-ucode linux-firmware-intel mesa-dri \
+      <p>
+        These packages are intended for Intel graphics and firmware. Confirm
+        that they suit your hardware before installing.
+      </p>
+      <pre><code>sudo xbps-install -S intel-ucode linux-firmware-intel mesa-dri \
   intel-video-accel vulkan-loader mesa-vulkan-intel lm_sensors ffmpeg \
   gst-libav gst-plugins-bad1 gst-plugins-good1 gst-plugins-ugly1</code></pre>
 
-    <p>
-      If you use GRUB and installed Intel microcode, regenerate its
-      configuration:
-    </p>
-    <pre><code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
+      <p>
+        If you use GRUB and installed Intel microcode, regenerate its
+        configuration:
+      </p>
+      <pre><code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
 
-    <h2>Optional: reduce ext4 reserved space</h2>
+      <h2>Optional: reduce ext4 reserved space</h2>
 
-    <p>
-      Ext4 reserves space for system use. Only change this if you understand the
-      trade-off, and first identify the correct root partition. The following
-      example sets the reserved percentage to zero; replace the device with your
-      actual root partition.
-    </p>
-    <pre><code>lsblk -f
+      <p>
+        Ext4 reserves space for system use. Only change this if you understand
+        the trade-off, and first identify the correct root partition. The
+        following example sets the reserved percentage to zero; replace the
+        device with your actual root partition.
+      </p>
+      <pre><code>lsblk -f
 sudo tune2fs -m 0 /dev/ROOT_PARTITION</code></pre>
 
-    <h2>Optional: power management with TLP</h2>
+      <h2>Optional: power management with TLP</h2>
 
-    <pre><code>sudo xbps-install -S tlp tlp-rdw
+      <pre><code>sudo xbps-install -S tlp tlp-rdw
 sudo ln -s /etc/sv/tlp /var/service/</code></pre>
 
-    <p>Check TLP status:</p>
-    <pre><code>sudo tlp-stat -s</code></pre>
+      <p>Check TLP status:</p>
+      <pre><code>sudo tlp-stat -s</code></pre>
 
-    <h2>Optional: scheduled filesystem trim</h2>
+      <h2>Optional: scheduled filesystem trim</h2>
 
-    <p>
-      Enable cron, then create a weekly trim job. Confirm that your storage and
-      filesystem support discard before using trim.
-    </p>
-    <pre><code>sudo xbps-install -S cronie
+      <p>
+        Enable cron, then create a weekly trim job. Confirm that your storage
+        and filesystem support discard before using trim.
+      </p>
+      <pre><code>sudo xbps-install -S cronie
 sudo ln -s /etc/sv/cronie /var/service/</code></pre>
 
-    <p>Create <code>/etc/cron.weekly/fstrim</code> with these contents:</p>
-    <pre><code>#!/bin/sh
+      <p>Create <code>/etc/cron.weekly/fstrim</code> with these contents:</p>
+      <pre><code>#!/bin/sh
 /sbin/fstrim /</code></pre>
 
-    <p>Make the script executable:</p>
-    <pre><code>sudo chmod +x /etc/cron.weekly/fstrim</code></pre>
+      <p>Make the script executable:</p>
+      <pre><code>sudo chmod +x /etc/cron.weekly/fstrim</code></pre>
 
-    <h2>Optional: Fastfetch</h2>
+      <h2>Optional: Fastfetch</h2>
 
-    <pre><code>sudo xbps-install -S fastfetch
+      <pre><code>sudo xbps-install -S fastfetch
 printf '%s\n' 'fastfetch' &gt;&gt; ~/.bashrc</code></pre>
 
-    <h2>Optional: zram</h2>
+      <h2>Optional: zram</h2>
 
-    <p>
-      Check the current package instructions before enabling zram; package names
-      and setup steps may change.
-    </p>
-    <pre><code>sudo xbps-install -S zramen
+      <p>
+        Check the current package instructions before enabling zram; package
+        names and setup steps may change.
+      </p>
+      <pre><code>sudo xbps-install -S zramen
 sudo zramen make</code></pre>
 
-    <h2>Optional: virtualization with virt-manager</h2>
+      <h2>Optional: virtualization with virt-manager</h2>
 
-    <pre><code>sudo xbps-install -S libvirt virt-manager qemu
+      <pre><code>sudo xbps-install -S libvirt virt-manager qemu
 sudo ln -s /etc/sv/libvirtd /var/service/
 sudo ln -s /etc/sv/virtlockd /var/service/
 sudo ln -s /etc/sv/virtlogd /var/service/</code></pre>
 
-    <p>
-      Log out and back in after adding your user to any groups required by your
-      virtualization setup. Consult the installed package documentation for the
-      exact group and service requirements.
-    </p>
+      <p>
+        Log out and back in after adding your user to any groups required by
+        your virtualization setup. Consult the installed package documentation
+        for the exact group and service requirements.
+      </p>
 
-    <h2>PipeWire audio</h2>
+      <h2>PipeWire audio</h2>
 
-    <p>
-      Install PipeWire and its session manager. The PulseAudio compatibility
-      layer is useful for applications that expect PulseAudio.
-    </p>
-    <pre><code>sudo xbps-install -S pipewire wireplumber</code></pre>
+      <p>
+        Install PipeWire and its session manager. The PulseAudio compatibility
+        layer is useful for applications that expect PulseAudio.
+      </p>
+      <pre><code>sudo xbps-install -S pipewire wireplumber</code></pre>
 
-    <p>
-      Enable WirePlumber and the PulseAudio compatibility layer in PipeWire’s
-      configuration:
-    </p>
-    <pre><code>sudo mkdir -p /etc/pipewire/pipewire.conf.d
+      <p>
+        Enable WirePlumber and the PulseAudio compatibility layer in PipeWire’s
+        configuration:
+      </p>
+      <pre><code>sudo mkdir -p /etc/pipewire/pipewire.conf.d
 sudo ln -sf /usr/share/examples/wireplumber/10-wireplumber.conf \
   /etc/pipewire/pipewire.conf.d/
 sudo ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf \
   /etc/pipewire/pipewire.conf.d/</code></pre>
 
-    <p>
-      PipeWire should be started by your user session, not enabled as a root
-      runit service. Log out and back in, then check the session:
-    </p>
-    <pre><code>wpctl status</code></pre>
+      <p>
+        PipeWire should be started by your user session, not enabled as a root
+        runit service. Log out and back in, then check the session:
+      </p>
+      <pre><code>wpctl status</code></pre>
 
-    <h2>Bluetooth</h2>
+      <h2>Bluetooth</h2>
 
-    <pre><code>sudo xbps-install -S bluez
+      <pre><code>sudo xbps-install -S bluez
 sudo ln -s /etc/sv/bluetoothd /var/service/</code></pre>
 
-    <p>
-      For Bluetooth audio through PipeWire, install the Bluetooth SPA plugin if
-      it is available in your repositories:
-    </p>
-    <pre><code>sudo xbps-install -S libspa-bluetooth</code></pre>
-  </main>
+      <p>
+        For Bluetooth audio through PipeWire, install the Bluetooth SPA plugin
+        if it is available in your repositories:
+      </p>
+      <pre><code>sudo xbps-install -S libspa-bluetooth</code></pre>
+    </main>
 
-  <div id="footerPlace"></div>
+    <div id="footerPlace"></div>
+  </div>
   <!-- Script section -->
   <script src="/js/dark-mode.js"></script>
-  <script src="/js/header.js"></script>
+  <script src="/js/sidebar.js"></script>
   <script src="/js/footer.js"></script>
 </body>

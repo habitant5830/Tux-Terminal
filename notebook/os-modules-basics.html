@@ -11,101 +11,108 @@
   <meta name="author" content="NullPointer8118" />
   <link rel="stylesheet" href="/styles/style.css" />
   <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+    integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 </head>
 <body>
-  <div id="headerPlace"></div>
+  <div id="sidebar"></div>
+  <div class="main-container">
+    <div class="theme-toggle">
+      <img id="themeSwitchButton" src="/images/theme-toggle.png" alt="" />
+    </div>
+    <div id="box1"><h1>Python: OS Module Basics</h1></div>
 
-  <div class="theme-toggle">
-    <img id="themeSwitchButton" src="/images/theme-toggle.png" alt="" />
+    <main>
+      <ol>
+        <ul>
+          <li>OS Module is a python built-in module.</li>
+          <li>
+            OS Modules helps us to interact with the system directly using
+            python programming. For example, allows operations like moving a
+            file, creating a file, deleting a file, etc.
+          </li>
+        </ul>
+        Import the module using:
+        <pre><code>import os</code></pre>
+        <li><h2>print()</h2></li>
+        <p>
+          no matter whichever keyword or function you use, If you want to
+          display the output on the terminal inetractively, use print command:
+        </p>
+        <pre><code>print()</code></pre>
+        <li><h2>Object Introspection</h2></li>
+        <p>
+          Object introspection is a way to know the attributes and functions
+          included in this module.
+        </p>
+        <pre><code>print(dir(os))</code></pre>
+        <li><h2>os.getcwd()</h2></li>
+        To know your current working directory, you can use:
+        <pre><code>print(os.getcwd())</code></pre>
+        <ul>
+          <li><h3>To Change CWD</h3></li>
+        </ul>
+        <pre><code>os.chdir("<--path of new location-->")</code></pre>
+        <p>Verify the change by trying to print the CWD again:</p>
+        <pre><code>print(os.getcwd())</code></pre>
+        <li><h2>os.listdir()</h2></li>
+        <p>
+          This lists all the directories and files on the current working
+          directory.
+        </p>
+        <pre><code>print(os.listdir())</code></pre>
+        <p>To list all directories and files in a specific path:</p>
+        <pre><code>os.chdir("<--path url-->")</code></pre>
+        <li><h2>os.mkdir()</h2></li>
+        <p>Used to create directory.</p>
+        <pre><code>os.mkdir("<--directory_name-->")</code></pre>
+        <p>Verify creation using:</p>
+        <pre><code>print(os.listdir())</code></pre>
+        <ul>
+          <li>
+            <h3>Create subfolders</h3>
+          </li>
+        </ul>
+        <p>To create subfolders you can use:</p>
+        <pre><code>os.mkdir("<--directory_name/subfolder_name-->")</code></pre>
+        <li><h2>os.makedirs()</h2></li>
+        <p>
+          using os.makedirs(), you can create the main folder along with
+          subfolders if it not exists yet.
+        </p>
+        <pre><code>os.makedirs("<--directory_name/subfolder_name-->")</code></pre>
+        <li><h2>os.rename()</h2></li>
+        <p>Helps to rename files. It takes two arguments.</p>
+        <pre><code>os.rename("old_name","new_name")</code></pre>
+        <p>Verify name change using:</p>
+        <pre><code>print(os.listdir())</code></pre>
+        <li><h2>os.path.exists()</h2></li>
+        <p>Helps us to verify that actually a path exists.</p>
+        <p>Verify creation using:</p>
+        <pre><code>print(os.path.exists("<--path_url-->"))</code></pre>
+        <blockquote>
+          The output will be printed like boolean values. (True/False).
+        </blockquote>
+        <p>
+          You can replace <strong>exists</strong> with many other keywords like:
+        </p>
+        <ul>
+          <li>isfile</li>
+          <li>isabs</li>
+          <li>isdir</li>
+          <li>islink</li>
+        </ul>
+      </ol>
+    </main>
+    <div id="footerPlace"></div>
   </div>
-
-  <div id="box1"><h1>Python: OS Module Basics</h1></div>
-
-  <main>
-    <ol>
-      <ul>
-        <li>OS Module is a python built-in module.</li>
-        <li>
-          OS Modules helps us to interact with the system directly using python
-          programming. For example, allows operations like moving a file,
-          creating a file, deleting a file, etc.
-        </li>
-      </ul>
-      Import the module using:
-      <pre><code>import os</code></pre>
-      <li><h2>print()</h2></li>
-      <p>
-        no matter whichever keyword or function you use, If you want to display
-        the output on the terminal inetractively, use print command:
-      </p>
-      <pre><code>print()</code></pre>
-      <li><h2>Object Introspection</h2></li>
-      <p>
-        Object introspection is a way to know the attributes and functions
-        included in this module.
-      </p>
-      <pre><code>print(dir(os))</code></pre>
-      <li><h2>os.getcwd()</h2></li>
-      To know your current working directory, you can use:
-      <pre><code>print(os.getcwd())</code></pre>
-      <ul>
-        <li><h3>To Change CWD</h3></li>
-      </ul>
-      <pre><code>os.chdir("<--path of new location-->")</code></pre>
-      <p>Verify the change by trying to print the CWD again:</p>
-      <pre><code>print(os.getcwd())</code></pre>
-      <li><h2>os.listdir()</h2></li>
-      <p>
-        This lists all the directories and files on the current working
-        directory.
-      </p>
-      <pre><code>print(os.listdir())</code></pre>
-      <p>To list all directories and files in a specific path:</p>
-      <pre><code>os.chdir("<--path url-->")</code></pre>
-      <li><h2>os.mkdir()</h2></li>
-      <p>Used to create directory.</p>
-      <pre><code>os.mkdir("<--directory_name-->")</code></pre>
-      <p>Verify creation using:</p>
-      <pre><code>print(os.listdir())</code></pre>
-      <ul>
-        <li>
-          <h3>Create subfolders</h3>
-        </li>
-      </ul>
-      <p>To create subfolders you can use:</p>
-      <pre><code>os.mkdir("<--directory_name/subfolder_name-->")</code></pre>
-      <li><h2>os.makedirs()</h2></li>
-      <p>
-        using os.makedirs(), you can create the main folder along with
-        subfolders if it not exists yet.
-      </p>
-      <pre><code>os.makedirs("<--directory_name/subfolder_name-->")</code></pre>
-      <li><h2>os.rename()</h2></li>
-      <p>Helps to rename files. It takes two arguments.</p>
-      <pre><code>os.rename("old_name","new_name")</code></pre>
-      <p>Verify name change using:</p>
-      <pre><code>print(os.listdir())</code></pre>
-      <li><h2>os.path.exists()</h2></li>
-      <p>Helps us to verify that actually a path exists.</p>
-      <p>Verify creation using:</p>
-      <pre><code>print(os.path.exists("<--path_url-->"))</code></pre>
-      <blockquote>
-        The output will be printed like boolean values. (True/False).
-      </blockquote>
-      <p>
-        You can replace <strong>exists</strong> with many other keywords like:
-      </p>
-      <ul>
-        <li>isfile</li>
-        <li>isabs</li>
-        <li>isdir</li>
-        <li>islink</li>
-      </ul>
-    </ol>
-  </main>
-  <div id="footerPlace"></div>
   <!-- Script section -->
   <script src="/js/dark-mode.js"></script>
-  <script src="/js/header.js"></script>
+  <script src="/js/sidebar.js"></script>
   <script src="/js/footer.js"></script>
 </body>
