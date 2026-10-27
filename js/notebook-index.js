@@ -12,6 +12,13 @@ const gridPosts = [
     summary: "Basic python os module commands explained.",
     link: "/notebook/os-modules-basics.html",
   },
+  {
+    tag: "VOID",
+    title: "Void Linux Setup Guide",
+    summary:
+      "A brief guide on the installation and setup of void linux as a daily driver.",
+    link: "/notebook/void-linux.html",
+  },
 ];
 
 let allGridCards = "";
