@@ -243,6 +243,18 @@ sudo ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf \
 
       <pre><code>sudo xbps-install -S bluez libspa-bluetooth
 sudo ln -s /etc/sv/bluetoothd /var/service/</code></pre>
+
+      <h2>Enable zstd compression in btrfs</h2>
+      <pre><code>sudo nano /etc/fstab</code></pre>
+      <p>Replace that defaults with <strong>compress=zstd</strong></p>
+      <h3>Apply it without reboot:</h3>
+      <pre><code>sudo mount -o remount,compress=zstd /</code></pre>
+      <p>Verify it by checking:</p>
+      <pre><code>nano /proc/mounts</code></pre>
+      <p>
+        You must see something like <strong>compress zstd:3</strong> on
+        <strong>/</strong> mount point.
+      </p>
     </main>
 
     <div id="footerPlace"></div>
