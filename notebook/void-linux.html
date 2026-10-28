@@ -255,12 +255,20 @@ sudo ln -s /etc/sv/bluetoothd /var/service/</code></pre>
         You must see something like <strong>compress zstd:3</strong> on
         <strong>/</strong> mount point.
       </p>
+
+      <h2>Change default editor to nano</h2>
+      <pre><code>sudo nano ~/.bashrc</code></pre>
+      <p>Add these lines:</p>
+      <pre><code>export EDITOR=nano
+export VISUAL=nano</code></pre>
+      <p>Reload shell:</p>
+      <pre><code>source ~/.bashrc</code></pre>
     </main>
 
     <div id="footerPlace"></div>
   </div>
   <!-- Script section -->
-  <script src="/js/dark-mode.js"></script>
-  <script src="/js/sidebar.js"></script>
-  <script src="/js/footer.js"></script>
+  <script src="/js/dark-mode.js" defer></script>
+  <script src="/js/sidebar.js" defer></script>
+  <script src="/js/footer.js" defer></script>
 </body>
