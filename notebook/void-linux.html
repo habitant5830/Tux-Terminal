@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -98,16 +98,14 @@ sudo wpa_supplicant -B -i INTERFACE \
 sudo dhcpcd INTERFACE
 ping -c 4 example.com</code></pre>
 
-      <h2>Install KDE Plasma and enable services</h2>
+      <h2>Install KDE Plasma non-meta packages and enable services</h2>
 
-      <pre><code>sudo xbps-install -S kde-plasma kde-baseapps sddm xorg dbus NetworkManager</code></pre>
+      <pre><code>sudo xbps-install -S xorg dbus NetworkManager plasma-desktop kf6-kded plasma-workspace-wallpapers xdg-desktop-portal-kde kinfocenter kscreen powerdevil plasma-thunderbolt bluedevil plasma-nm plasma-pa kgamma kdeplasma-addons breeze-gtk kde-gtk-config kwallet-pam oxygen-qt6 ksshaskpass kwrited sddm-kcm elogind upower udisks2 dolphin kate konsole</code></pre>
 
       <p>Enable D-Bus, SDDM, and NetworkManager with runit:</p>
       <pre><code>sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/sddm /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/</code></pre>
-      <h2>Minimal Installation</h2>
-      <pre><code>sudo xbps-install xorg sddm kwin plasma-workspace plasma-desktop plasma-workspace-wallpapers plasma-nm NetworkManager dolphin konsole xdg-utils</code></pre>
       <p>
         Reboot to start Plasma. If you used <code>dhcpcd</code> as a separate
         service and are switching to NetworkManager, check its status first:
@@ -128,10 +126,7 @@ sudo ln -s /etc/sv/NetworkManager /var/service/</code></pre>
         it is available for your repository and architecture.
       </p>
 
-      <pre><code>sudo xbps-install -S nano ark spectacle okular gwenview gimp firefox chromium \
-  libreoffice vscode haruna android-tools baobab stellarium gcompris-qt \
-  octoxbps tuxpaint hugo nodejs ghostwriter hunspell telegram-desktop \
-  element-desktop git</code></pre>
+      <pre><code>sudo xbps-install -S nano ark spectacle plasma-browser-integration okular gwenview vivaldi libreoffice vscode haruna android-tools baobab octoxbps hugo nodejs ghostwriter hunspell telegram-desktop git</code></pre>
 
       <p>
         Some listed applications may require a separate download or may not be
@@ -145,9 +140,7 @@ sudo ln -s /etc/sv/NetworkManager /var/service/</code></pre>
         These packages are intended for Intel graphics and firmware. Confirm
         that they suit your hardware before installing.
       </p>
-      <pre><code>sudo xbps-install -S intel-ucode linux-firmware-intel mesa-dri \
-  intel-video-accel vulkan-loader mesa-vulkan-intel lm_sensors ffmpeg \
-  gst-libav gst-plugins-bad1 gst-plugins-good1 gst-plugins-ugly1</code></pre>
+      <pre><code>sudo xbps-install -S intel-ucode linux-firmware-intel mesa-dri intel-video-accel vulkan-loader mesa-vulkan-intel lm_sensors ffmpeg gst-libav gst-plugins-bad1 gst-plugins-good1 gst-plugins-ugly1</code></pre>
 
       <p>
         If you use GRUB and installed Intel microcode, regenerate its
@@ -168,11 +161,12 @@ sudo tune2fs -m 0 /dev/ROOT_PARTITION</code></pre>
 
       <h2>Optional: power management with TLP</h2>
 
-      <pre><code>sudo xbps-install -S tlp tlp-rdw
-sudo ln -s /etc/sv/tlp /var/service/</code></pre>
+      <pre><code>sudo xbps-install -S tlp tlp-rdw tlp-pd smartmontools
+sudo ln -s /etc/sv/tlp /var/service/
+sudo ln -s /etc/sv/tlp-pd /var/service/</code></pre>
 
       <p>Check TLP status:</p>
-      <pre><code>sudo tlp-stat -s</code></pre>
+      <pre><code>sudo tlp-stat</code></pre>
 
       <h2>Optional: scheduled filesystem trim</h2>
 
@@ -235,6 +229,10 @@ sudo ln -sf /usr/share/examples/wireplumber/10-wireplumber.conf \
 sudo ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf \
   /etc/pipewire/pipewire.conf.d/</code></pre>
 
+      <pre><code>mkdir -p ~/.config/autostart
+    sudo ln -sf /usr/share/applications/pipewire.desktop ~/.config/autostart
+  </code></pre>
+
       <p>
         PipeWire should be started by your user session, not enabled as a root
         runit service. Log out and back in, then check the session:
@@ -243,14 +241,8 @@ sudo ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf \
 
       <h2>Bluetooth</h2>
 
-      <pre><code>sudo xbps-install -S bluez
+      <pre><code>sudo xbps-install -S bluez libspa-bluetooth
 sudo ln -s /etc/sv/bluetoothd /var/service/</code></pre>
-
-      <p>
-        For Bluetooth audio through PipeWire, install the Bluetooth SPA plugin
-        if it is available in your repositories:
-      </p>
-      <pre><code>sudo xbps-install -S libspa-bluetooth</code></pre>
     </main>
 
     <div id="footerPlace"></div>
