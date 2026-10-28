@@ -213,7 +213,7 @@ aside {
 }
 
 .home-logo {
-  filter: invert(0);
+  filter: invert();
   width: 30px;
   height: 30px;
   display: flex;
