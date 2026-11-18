@@ -129,15 +129,70 @@
         </tbody>
       </table>
 
-      <h2>Multimedia codecs and hardware acceleration</h2>
+      <h2>Add multimedia repos</h2>
 
-      <p>Updated in future</p>
+      <p>
+        Goto <a href="https://www.deb-multimedia.org/">deb-multimedia.org</a>.
+      </p>
+
+      <p>Scoll down and copy the repository url.</p>
+
+      <div class="picture-container">
+        <img
+          src="/images/articles/debian-multimedia-repo.png"
+          alt="debian-multimedia-repo"
+        />
+      </div>
+
+      <p>Now install the downloaded .deb package using:</p>
+
+      <pre><code>sudo dpkg -i deb-multimedia-keyring_2024.9.1_all.deb</code></pre>
+
+      <blockquote>
+        The package name maybe change according to the file you downloaded.
+        Verify it is the correct file name using <strong>ls</strong> command
+        before installing.
+      </blockquote>
+
+      <p>
+        Now you have to add the sources list. For that find your debian stanble
+        version. Currently in 2026, the stable release is
+        <strong>debian 13 trixie.</strong>
+      </p>
+
+      <div class="picture-container">
+        <img
+          src="/images/articles/debian-sources-file.png"
+          alt="debian-sources-file"
+        />
+      </div>
+
+      <p>
+        As given above, add the file to
+        <strong>/etc/apt/sources.list.d/dmo.sources</strong> with the editor you
+        use (nano/vim).
+      </p>
+
+      <p>
+        Now just update the system and update the packages which are upgradable.
+      </p>
+
+      <pre><code>sudo apt update</code></pre>
+
+      <h2>Modernize apt repos</h2>
+
+      <p>
+        We can simply modernize apt custom added repositories using a single
+        command.
+      </p>
+
+      <pre><code>sudo apt modernize-sources</code></pre>
 
       <h2>Firmware updates using the fwupd package</h2>
 
       <blockquote>
         You can easily do all updates, including apt, flatpak, and firmware, via
-        plasma-discover if you are on kde. Otherwide gnome software. If you
+        plasma-discover if you are on kde. Otherwise gnome software. If you
         prefer manual checking of firmware updates via terminal, then you can
         use this method.
       </blockquote>
