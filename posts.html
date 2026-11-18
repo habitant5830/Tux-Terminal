@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -21,25 +21,20 @@
 </head>
 <body>
   <div id="sidebar"></div>
-  <div class="main-container">
-    <div class="theme-toggle">
-      <img id="themeSwitchButton" src="/images/theme-toggle.png" alt="" />
+  <div id="box1"><h1>Posts Shelf</h1></div>
+
+  <main>
+    <div class="searchbox-wrapper">
+      <input type="text" id="searchBox" placeholder="Search Anything..." />
     </div>
-    <div id="box1"><h1>Posts Shelf</h1></div>
+    <div id="postsGrid"></div>
+  </main>
 
-    <main>
-      <div class="searchbox-wrapper">
-        <input type="text" id="searchBox" placeholder="Search Anything..." />
-      </div>
-      <div id="postsGrid"></div>
-    </main>
-
-    <div id="footerPlace"></div>
-  </div>
+  <div id="footerPlace"></div>
   <!-- Script section -->
+  <script src="/js/sidebar.js" defer></script>
   <script src="/js/dark-mode.js" defer></script>
   <script src="/js/posts-index.js" defer></script>
-  <script src="/js/sidebar.js" defer></script>
   <script src="/js/searchbox.js" defer></script>
   <script src="/js/footer.js" defer></script>
 </body>
