@@ -25,7 +25,7 @@
     <h1>Debian Post Install Guide for Modern Hardwares</h1>
   </div>
 
-  <main>
+  <main class="article">
     <div>
       <p>
         Debian is a well-known rock-solid Linux distribution. Because of its
@@ -41,9 +41,9 @@
       </p>
 
       <p>
-        Today I would like to give you some advice on how to make Debian.
-        excellently supported enough to daily drive on your modern hardware
-        system. Let's dive in.
+        I would like to give you some advice on how to make Debian excellently
+        supported enough to daily drive on your modern laptop or desktop
+        systems. Let's dive in.
       </p>
 
       <h2>Enable Sudo Access.</h2>
@@ -63,7 +63,7 @@
 
       <p>Log out, then log back in or just perform a reboot.</p>
 
-      <h2>Enable contrib, non-free, and non-free-firmware repositories.</h2>
+      <h2>Enable more repositories.</h2>
 
       <p>Access the Debian official repositories file.</p>
 
@@ -84,7 +84,7 @@
 
       <pre><code>sudo apt update && sudo apt upgrade</code></pre>
 
-      <h2>Install Essential Packages</h2>
+      <h2>Install Essential Tools</h2>
 
       <p>
         Especially for modern hardware, we have to ensure that microcode,
@@ -97,60 +97,49 @@
         i5 processor, so installing tools required for Intel-based systems.
       </blockquote>
 
-      <h3>Install microcode and drivers</h3>
+      <h3>Install free and non-free drivers</h3>
 
-      <pre><code>sudo apt install intel-microcode firmware-misc-nonfree intel-media-va-driver-non-free mesa-va-drivers firmware-linux firmware-linux-nonfree</code></pre>
+      <pre><code>sudo apt install firmware-linux firmware-linux-nonfree firmware-misc-nonfree</code></pre>
 
-      <h3>Install hardware monitoring tools</h3>
-
-      <pre><code>sudo apt install lm-sensors intel-gpu-tools</code></pre>
-
-      <h3>Power management tools</h3>
+      <h3>Tweak Power management behaviour</h3>
 
       <p>
-        Here I am going to instruct you to install a power management tool
-        called
-
-        <strong>TLP</strong>. If you are okay with the default power Management
-        tools <strong>power-profiles-daemon</strong> skip this step.
+        Goto system settings -> power management and change the switch to power
+        profile values like this:
       </p>
 
-      <pre><code>sudo apt install tlp tlp-rdw thermald</code></pre>
-
-      <blockquote>
-        Caution: Installing <strong>tlp</strong> alongside power-profiles-daemon
-        auto uninstalls power-profiles-daemon. You cannot use both at the same
-        time.
-      </blockquote>
-
-      <p>Enable TLP services and thermald:</p>
-
-      <pre><code>sudo systemctl enable --now tlp.service</code></pre>
-
-      <pre><code>sudo systemctl enable --now thermald</code></pre>
-
-      <p>Check the current status by using the following:</p>
-
-      <pre><code>tlp-stat -s</code></pre>
-
-      <h2>Configure touchpad and gestures (Wayland).</h2>
-
-      <pre><code>sudo apt install libinput-tools</code></pre>
+      <table>
+        <tbody>
+          <tr>
+            <th>State</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>On AC Power</td>
+            <td>Performance</td>
+          </tr>
+          <tr>
+            <td>On Battery</td>
+            <td>Balanced</td>
+          </tr>
+          <tr>
+            <td>On Low Battery</td>
+            <td>Battery Saver</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Multimedia codecs and hardware acceleration</h2>
 
-      <pre><code>sudo apt install ffmpeg gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad gstreamer1.0-libav vainfo</code></pre>
-
-      <p>Verify hardware acceleration using:</p>
-
-      <pre><code>vainfo</code></pre>
+      <p>Updated in future</p>
 
       <h2>Firmware updates using the fwupd package</h2>
 
       <blockquote>
         You can easily do all updates, including apt, flatpak, and firmware, via
-        plasma-discover software. If you prefer manual checking of firmware
-        updates via terminal, then you can use this method.
+        plasma-discover if you are on kde. Otherwide gnome software. If you
+        prefer manual checking of firmware updates via terminal, then you can
+        use this method.
       </blockquote>
 
       <p>Download the fwupd package:</p>
@@ -187,7 +176,10 @@
 
       <pre><code>sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo</code></pre>
 
-      <p>Now reboot the system. That's it; everything works perfectly.</p>
+      <p>
+        Now reboot the system. That's it; everything will work perfectly as
+        expected.
+      </p>
     </div>
   </main>
   <div id="footerPlace"></div>
