@@ -161,7 +161,7 @@ main.article h6 {
   text-align: left;
 }
 
-main.article button {
+main#article button {
   padding: 10px;
   margin: 1rem 0 0;
   border: var(--border);
@@ -253,6 +253,15 @@ aside {
   margin: 1rem;
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
+}
+
+/* table of contents */
+.toccontainer {
+  border: 10px double var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 5px;
+  margin: 1rem 0 1rem;
+  font-size: large;
 }
 
 /* footer section */
